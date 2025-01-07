@@ -30,7 +30,7 @@ const io = new Server(expressServer, {
   cors: {
     origin: [
       "http://localhost",
-      "https://192.168.1.32", //if using a phone or another computer
+      "https://[IP_ADDRS]", //if using a phone or another computer
     ],
     methods: ["GET", "POST"],
   },

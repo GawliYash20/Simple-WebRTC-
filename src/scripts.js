@@ -11,7 +11,7 @@ const videoOption = document.getElementById("video-option");
 
 // Initialize Socket.IO connection
 const socket = io.connect("https://localhost:8181/", {
-// const socket = io.connect("https://192.168.1.32:8180/", {
+// const socket = io.connect("https://[IP_ADDRS]:8180/", {
   auth: {
     userName,
     password,
