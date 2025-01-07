@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <title>Video Calling App</title>
+
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center py-6 px-4 sm:px-6 lg:px-8">
+    <!-- Toast container (will hold all the toast notifications) -->
+    <div id="toast-container" class="fixed top-16 left-2/3  transform -translate-x-1/2 z-50"></div>
+
+
+    <div class="container bg-white p-6 rounded-lg shadow-lg w-full sm:w-10/12 md:w-8/12 lg:w-6/12">
+        <!-- Control section -->
+        <div class="flex justify-between mb-6">
+            <div class="flex items-center gap-4 p-4">
+                <div id="user-name" class="text-gray-700 font-semibold">User</div>
+                <button class="btn btn-primary px-4 py-2 rounded-md text-white hover:shadow-xl" id="call">Call!</button>
+                <button class="btn btn-error px-4 py-2 rounded-md text-white hover:shadow-xl"
+                    id="hangup">Hangup</button>
+                <form id="selectVideo-form" class="border p-3 rounded-lg shadow-lg w-36">
+                    <label for="video-option" class="block text-gray-700">Select to share:</label>
+                    <select class="cursor-pointer w-full p-2 mt-1 rounded-md border border-gray-300 text-xs"
+                        name="video-option" id="video-option">
+                        <option value="share-screen" class="text-xs">Screen-share</option>
+                        <option value="share-webcam" class="text-xs">WebCam</option>
+                    </select>
+                </form>
+            </div>
+            <div class="p-4">
+                <p class="font-light text-gray-600">Incoming Calls:</p>
+                <div id="answer"></div>
+            </div>
+        </div>
+
+        <!-- Video section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6" id="videos">
+            <!-- Local Video -->
+            <div class="flex flex-col items-center">
+                <p class="font-medium text-gray-800 mb-2">Client 1</p>
+                <video class="rounded-lg border border-gray-300 shadow-lg w-full max-w-xs" id="local-video" autoplay
+                    playsinline></video>
+            </div>
+
+            <!-- Remote Video -->
+            <div class="flex flex-col items-center justify-center">
+                <p class="font-medium text-gray-800 mb-2">Client 2</p>
+                <div class="btn btn-warning my-1 cursor-default hidden" id="waiting">Waiting for answer</div>
+                <video class="border border-gray-300 rounded-lg shadow-lg w-full max-w-xs" id="remote-video" controls></video>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/scripts.js"></script>
+    <script src="/socketListeners.js"></script>
+</body>
+
+</html>
